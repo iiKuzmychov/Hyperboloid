@@ -43,6 +43,7 @@ namespace Hyperboloid
 
             graphicsEngine.ZeroPositionOffset   = new Point3D((double)GraphicsPanel.Width / 2, (double)GraphicsPanel.Height / 2, 0);
             graphicsEngine.Figures3DStep        = (double)StepBar.Value / 10;
+            graphicsEngine.Figures2DStep        = (double)StepBar.Value / 30;
             graphicsEngine.ScaleFactor          = (double)ScaleFactorBar.Value / 10;
             graphicsEngine.Rotation             = Vector3D.FromDegrees(XRotationBar.Value, YRotationBar.Value, ZRotationBar.Value);
 
@@ -75,6 +76,9 @@ namespace Hyperboloid
         {
             graphics?.Dispose();
             graphics = GraphicsPanel.CreateGraphics();
+
+            if (autoUpdate)
+                GraphicsPanel.Refresh();
         }
 
         private void AValue_ValueChanged(object sender, EventArgs e)
@@ -139,12 +143,6 @@ namespace Hyperboloid
         {
             var calculatingForm = new HyperboloidSurfaceVolumeCalculatingForm((double)AValue.Value, (double)CValue.Value, (double)HValue.Value);
             calculatingForm.Show();
-        }
-
-        private void MainForm_Resize(object sender, EventArgs e)
-        {
-            if (autoUpdate)
-                GraphicsPanel.Refresh();
         }
 
         private void SmoothBox_CheckedChanged(object sender, EventArgs e)

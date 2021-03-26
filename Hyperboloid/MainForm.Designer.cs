@@ -481,7 +481,6 @@ namespace Hyperboloid
             this.Name = "MainForm";
             this.Text = "Однополостная гиперболоида";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HValue)).EndInit();
