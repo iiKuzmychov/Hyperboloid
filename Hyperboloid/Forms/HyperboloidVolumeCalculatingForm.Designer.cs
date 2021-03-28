@@ -1,7 +1,7 @@
 ﻿
 namespace Hyperboloid
 {
-    partial class HyperboloidSurfaceVolumeCalculatingForm
+    partial class HyperboloidVolumeCalculatingForm
     {
         /// <summary>
         /// Required designer variable.
@@ -222,7 +222,7 @@ namespace Hyperboloid
             this.SurfaceVolumeValue.Size = new System.Drawing.Size(249, 30);
             this.SurfaceVolumeValue.TabIndex = 7;
             // 
-            // HyperboloidSurfaceVolumeCalculatingForm
+            // HyperboloidVolumeCalculatingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -236,9 +236,9 @@ namespace Hyperboloid
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "HyperboloidSurfaceVolumeCalculatingForm";
+            this.Name = "HyperboloidVolumeCalculatingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Объём поверхности";
+            this.Text = "Расчёты объёма";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HValue)).EndInit();

@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,33 +47,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ellipse.cs" />
-    <Compile Include="GraphicsEngine3D.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\BodyInertiaMomentsCalculationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\BodyInertiaMomentsCalculationForm.Designer.cs">
+      <DependentUpon>BodyInertiaMomentsCalculationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DrawableFigures\2D\Circle.cs" />
+    <Compile Include="DrawableFigures\2D\Ellipse.cs" />
+    <Compile Include="GraphicsEngine\GraphicsEngine3D.cs" />
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hyperboloid.cs" />
-    <Compile Include="DrawableFigure2D.cs" />
-    <Compile Include="DrawableFigure3D.cs" />
-    <Compile Include="HyperboloidSurfaceVolumeCalculatingForm.cs">
+    <Compile Include="DrawableFigures\3D\HyperboloidOfRevolution.cs" />
+    <Compile Include="DrawableFigures\3D\SingleSheetHyperboloid.cs" />
+    <Compile Include="DrawableFigures\2D\DrawableFigure2D.cs" />
+    <Compile Include="DrawableFigures\3D\DrawableFigure3D.cs" />
+    <Compile Include="Forms\HyperboloidVolumeCalculatingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HyperboloidSurfaceVolumeCalculatingForm.Designer.cs">
-      <DependentUpon>HyperboloidSurfaceVolumeCalculatingForm.cs</DependentUpon>
+    <Compile Include="Forms\HyperboloidVolumeCalculatingForm.Designer.cs">
+      <DependentUpon>HyperboloidVolumeCalculatingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Point3D.cs" />
-    <Compile Include="Point2D.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="GraphicsEngine\Point3D.cs" />
+    <Compile Include="GraphicsEngine\Point2D.cs" />
+    <Compile Include="GraphicsEngine\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vector3D.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <Compile Include="GraphicsEngine\Vector3D.cs" />
+    <EmbeddedResource Include="Forms\BodyInertiaMomentsCalculationForm.resx">
+      <DependentUpon>BodyInertiaMomentsCalculationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HyperboloidSurfaceVolumeCalculatingForm.resx">
-      <DependentUpon>HyperboloidSurfaceVolumeCalculatingForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\HyperboloidVolumeCalculatingForm.resx">
+      <DependentUpon>HyperboloidVolumeCalculatingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -101,12 +113,6 @@
     <None Include="Resources\example.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\example1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\826e99846928fc5a08bd99a1a320bb97.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\826e99846928fc5a08bd99a1a320bb971.png" />
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +120,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\8e0d3b9522bc09eed00e847e45aba3d4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\плоскости.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\оси.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

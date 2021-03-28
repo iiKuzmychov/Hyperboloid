@@ -29,6 +29,16 @@ namespace Hyperboloid
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation1 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.GraphicsPanel = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.HValue = new System.Windows.Forms.NumericUpDown();
@@ -55,8 +65,12 @@ namespace Hyperboloid
             this.XRotationBar = new System.Windows.Forms.TrackBar();
             this.FormMenuStrip = new System.Windows.Forms.MenuStrip();
             this.рассчётыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.OpenSurfaceVolumeCalculationgForm = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenVolumeCalculationgFormButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenBodyInertiaMomentsCalculationFormButton = new System.Windows.Forms.ToolStripMenuItem();
             this.SmoothBox = new System.Windows.Forms.CheckBox();
+            this.ParametrsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.AddToChartButton = new System.Windows.Forms.Button();
+            this.ClearChartButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CValue)).BeginInit();
@@ -71,6 +85,7 @@ namespace Hyperboloid
             ((System.ComponentModel.ISupportInitialize)(this.YRotationBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XRotationBar)).BeginInit();
             this.FormMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ParametrsChart)).BeginInit();
             this.SuspendLayout();
             // 
             // GraphicsPanel
@@ -81,7 +96,7 @@ namespace Hyperboloid
             this.GraphicsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.GraphicsPanel.Location = new System.Drawing.Point(12, 31);
             this.GraphicsPanel.Name = "GraphicsPanel";
-            this.GraphicsPanel.Size = new System.Drawing.Size(612, 660);
+            this.GraphicsPanel.Size = new System.Drawing.Size(644, 660);
             this.GraphicsPanel.TabIndex = 0;
             this.GraphicsPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.GraphicsPanel_Paint);
             this.GraphicsPanel.Resize += new System.EventHandler(this.GraphicsPanel_Resize);
@@ -96,7 +111,7 @@ namespace Hyperboloid
             this.groupBox1.Controls.Add(this.AValue);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox1.Location = new System.Drawing.Point(630, 104);
+            this.groupBox1.Location = new System.Drawing.Point(662, 104);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(190, 140);
             this.groupBox1.TabIndex = 2;
@@ -215,7 +230,7 @@ namespace Hyperboloid
             // 
             this.DrawButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.DrawButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.DrawButton.Location = new System.Drawing.Point(630, 645);
+            this.DrawButton.Location = new System.Drawing.Point(662, 645);
             this.DrawButton.Name = "DrawButton";
             this.DrawButton.Size = new System.Drawing.Size(190, 46);
             this.DrawButton.TabIndex = 3;
@@ -245,7 +260,7 @@ namespace Hyperboloid
             this.groupBox2.Controls.Add(this.ResetStepButton);
             this.groupBox2.Controls.Add(this.StepBar);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox2.Location = new System.Drawing.Point(630, 250);
+            this.groupBox2.Location = new System.Drawing.Point(662, 250);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(190, 75);
             this.groupBox2.TabIndex = 5;
@@ -256,7 +271,7 @@ namespace Hyperboloid
             // 
             this.ResetStepButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResetStepButton.BackgroundImage = global::Hyperboloid.Properties.Resources.refresh_reload_recycle_synchronize_retry_30557;
+            this.ResetStepButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ResetStepButton.BackgroundImage")));
             this.ResetStepButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ResetStepButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.ResetStepButton.Location = new System.Drawing.Point(138, 23);
@@ -272,7 +287,7 @@ namespace Hyperboloid
             this.groupBox3.Controls.Add(this.ResetScaleFactorButton);
             this.groupBox3.Controls.Add(this.ScaleFactorBar);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox3.Location = new System.Drawing.Point(630, 331);
+            this.groupBox3.Location = new System.Drawing.Point(662, 331);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(190, 75);
             this.groupBox3.TabIndex = 6;
@@ -283,7 +298,7 @@ namespace Hyperboloid
             // 
             this.ResetScaleFactorButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResetScaleFactorButton.BackgroundImage = global::Hyperboloid.Properties.Resources.refresh_reload_recycle_synchronize_retry_30557;
+            this.ResetScaleFactorButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ResetScaleFactorButton.BackgroundImage")));
             this.ResetScaleFactorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ResetScaleFactorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.ResetScaleFactorButton.Location = new System.Drawing.Point(138, 23);
@@ -316,7 +331,7 @@ namespace Hyperboloid
             this.AutoUpdateBox.Checked = true;
             this.AutoUpdateBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.AutoUpdateBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.AutoUpdateBox.Location = new System.Drawing.Point(630, 608);
+            this.AutoUpdateBox.Location = new System.Drawing.Point(662, 608);
             this.AutoUpdateBox.Name = "AutoUpdateBox";
             this.AutoUpdateBox.Size = new System.Drawing.Size(190, 29);
             this.AutoUpdateBox.TabIndex = 7;
@@ -329,7 +344,7 @@ namespace Hyperboloid
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = global::Hyperboloid.Properties.Resources._826e99846928fc5a08bd99a1a320bb971;
-            this.pictureBox1.Location = new System.Drawing.Point(630, 31);
+            this.pictureBox1.Location = new System.Drawing.Point(662, 31);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(190, 67);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -346,7 +361,7 @@ namespace Hyperboloid
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.XRotationBar);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox4.Location = new System.Drawing.Point(630, 412);
+            this.groupBox4.Location = new System.Drawing.Point(662, 412);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(190, 155);
             this.groupBox4.TabIndex = 9;
@@ -430,31 +445,39 @@ namespace Hyperboloid
             this.рассчётыToolStripMenuItem});
             this.FormMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.FormMenuStrip.Name = "FormMenuStrip";
-            this.FormMenuStrip.Size = new System.Drawing.Size(832, 28);
+            this.FormMenuStrip.Size = new System.Drawing.Size(1410, 28);
             this.FormMenuStrip.TabIndex = 10;
             this.FormMenuStrip.Text = "FormMenuStrip";
             // 
             // рассчётыToolStripMenuItem
             // 
             this.рассчётыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.OpenSurfaceVolumeCalculationgForm});
+            this.OpenVolumeCalculationgFormButton,
+            this.OpenBodyInertiaMomentsCalculationFormButton});
             this.рассчётыToolStripMenuItem.Name = "рассчётыToolStripMenuItem";
             this.рассчётыToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.рассчётыToolStripMenuItem.Text = "Рассчёты";
             // 
-            // OpenSurfaceVolumeCalculationgForm
+            // OpenVolumeCalculationgFormButton
             // 
-            this.OpenSurfaceVolumeCalculationgForm.Name = "OpenSurfaceVolumeCalculationgForm";
-            this.OpenSurfaceVolumeCalculationgForm.Size = new System.Drawing.Size(234, 26);
-            this.OpenSurfaceVolumeCalculationgForm.Text = "Объём поверхности";
-            this.OpenSurfaceVolumeCalculationgForm.Click += new System.EventHandler(this.OpenSurfaceVolumeCalculationgForm_Click);
+            this.OpenVolumeCalculationgFormButton.Name = "OpenVolumeCalculationgFormButton";
+            this.OpenVolumeCalculationgFormButton.Size = new System.Drawing.Size(259, 26);
+            this.OpenVolumeCalculationgFormButton.Text = "Объём поверхности";
+            this.OpenVolumeCalculationgFormButton.Click += new System.EventHandler(this.OpenVolumeCalculationgFormButton_Click);
+            // 
+            // OpenBodyInertiaMomentsCalculationFormButton
+            // 
+            this.OpenBodyInertiaMomentsCalculationFormButton.Name = "OpenBodyInertiaMomentsCalculationFormButton";
+            this.OpenBodyInertiaMomentsCalculationFormButton.Size = new System.Drawing.Size(259, 26);
+            this.OpenBodyInertiaMomentsCalculationFormButton.Text = "Моменты инерции тела";
+            this.OpenBodyInertiaMomentsCalculationFormButton.Click += new System.EventHandler(this.OpenBodyInertiaMomentsCalculationFormButton_Click);
             // 
             // SmoothBox
             // 
             this.SmoothBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SmoothBox.AutoSize = true;
             this.SmoothBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.SmoothBox.Location = new System.Drawing.Point(630, 573);
+            this.SmoothBox.Location = new System.Drawing.Point(662, 573);
             this.SmoothBox.Name = "SmoothBox";
             this.SmoothBox.Size = new System.Drawing.Size(158, 29);
             this.SmoothBox.TabIndex = 11;
@@ -462,11 +485,82 @@ namespace Hyperboloid
             this.SmoothBox.UseVisualStyleBackColor = true;
             this.SmoothBox.CheckedChanged += new System.EventHandler(this.SmoothBox_CheckedChanged);
             // 
+            // ParametrsChart
+            // 
+            this.ParametrsChart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            lineAnnotation1.Name = "LineAnnotation1";
+            this.ParametrsChart.Annotations.Add(lineAnnotation1);
+            this.ParametrsChart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ParametrsChart.BorderlineColor = System.Drawing.Color.DimGray;
+            this.ParametrsChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea1.Name = "ChartArea1";
+            this.ParametrsChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.ParametrsChart.Legends.Add(legend1);
+            this.ParametrsChart.Location = new System.Drawing.Point(858, 31);
+            this.ParametrsChart.Name = "ParametrsChart";
+            this.ParametrsChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Ixy";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Iyz";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Ixz";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Ix";
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Iy";
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Iz";
+            this.ParametrsChart.Series.Add(series1);
+            this.ParametrsChart.Series.Add(series2);
+            this.ParametrsChart.Series.Add(series3);
+            this.ParametrsChart.Series.Add(series4);
+            this.ParametrsChart.Series.Add(series5);
+            this.ParametrsChart.Series.Add(series6);
+            this.ParametrsChart.Size = new System.Drawing.Size(540, 608);
+            this.ParametrsChart.TabIndex = 12;
+            this.ParametrsChart.Text = "ParametrsChart";
+            // 
+            // AddToChartButton
+            // 
+            this.AddToChartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddToChartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.AddToChartButton.Location = new System.Drawing.Point(858, 645);
+            this.AddToChartButton.Name = "AddToChartButton";
+            this.AddToChartButton.Size = new System.Drawing.Size(320, 46);
+            this.AddToChartButton.TabIndex = 13;
+            this.AddToChartButton.Text = "Добавить на график";
+            this.AddToChartButton.UseVisualStyleBackColor = true;
+            this.AddToChartButton.Click += new System.EventHandler(this.AddToChartButton_Click);
+            // 
+            // ClearChartButton
+            // 
+            this.ClearChartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ClearChartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.ClearChartButton.Location = new System.Drawing.Point(1184, 645);
+            this.ClearChartButton.Name = "ClearChartButton";
+            this.ClearChartButton.Size = new System.Drawing.Size(214, 46);
+            this.ClearChartButton.TabIndex = 15;
+            this.ClearChartButton.Text = "Очистить";
+            this.ClearChartButton.UseVisualStyleBackColor = true;
+            this.ClearChartButton.Click += new System.EventHandler(this.ClearChartButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 703);
+            this.ClientSize = new System.Drawing.Size(1410, 703);
+            this.Controls.Add(this.ClearChartButton);
+            this.Controls.Add(this.AddToChartButton);
+            this.Controls.Add(this.ParametrsChart);
             this.Controls.Add(this.SmoothBox);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox4);
@@ -498,6 +592,7 @@ namespace Hyperboloid
             ((System.ComponentModel.ISupportInitialize)(this.XRotationBar)).EndInit();
             this.FormMenuStrip.ResumeLayout(false);
             this.FormMenuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ParametrsChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -530,9 +625,13 @@ namespace Hyperboloid
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MenuStrip FormMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem рассчётыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem OpenSurfaceVolumeCalculationgForm;
+        private System.Windows.Forms.ToolStripMenuItem OpenVolumeCalculationgFormButton;
         private System.Windows.Forms.Button ResetStepButton;
         private System.Windows.Forms.CheckBox SmoothBox;
+        private System.Windows.Forms.ToolStripMenuItem OpenBodyInertiaMomentsCalculationFormButton;
+        private System.Windows.Forms.DataVisualization.Charting.Chart ParametrsChart;
+        private System.Windows.Forms.Button AddToChartButton;
+        private System.Windows.Forms.Button ClearChartButton;
     }
 }
 

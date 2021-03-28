@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 
@@ -24,7 +23,7 @@ namespace Hyperboloid
         }
         public Color BackgroundColor { get; set; } = Color.White;
         public double Figures3DStep { get; set; } = 1;
-        public double Figures2DStep { get; set; } = 0.1;
+        public double Figures2DStep { get; set; } = 1;
         public double ScaleFactor
         {
             get => scaleFactor;
@@ -122,13 +121,37 @@ namespace Hyperboloid
                 .ToArray();
         }
 
-        private void Draw(Graphics graphics, Point2D[] points, Color color)
+        private void DrawPoints(Graphics graphics, Point2D[] points, Color color)
         {
             using (var brush = new SolidBrush(color))
             {
                 foreach (var point in points)
                     graphics.FillRectangle(brush, (float)point.X, (float)point.Y, 1, 1);
             }
+        }
+
+        private void DrawFigure3D(Graphics graphics, DrawableFigure3D figure, Color color)
+        {
+            var points3D    = GetPoints(figure, Figures3DStep);
+            points3D        = RotationTransform(points3D, Rotation);
+            points3D        = ScaleTranform(points3D, ScaleFactor);
+            points3D        = PositionTransform(points3D, ZeroPositionOffset);
+
+            var points2D = Points3DTo2DWithoutDuplicates(points3D);
+
+            DrawPoints(graphics, points2D, color);
+        }
+
+        private void DrawFigure2D(Graphics graphics, DrawableFigure2D figure, double z, Color color)
+        {
+            var points3D    = GetPoints(figure, Figures2DStep).Select(point2d => new Point3D(point2d, z)).ToArray();
+            points3D        = RotationTransform(points3D, Rotation);
+            points3D        = ScaleTranform(points3D, ScaleFactor);
+            points3D        = PositionTransform(points3D, ZeroPositionOffset);
+
+            var points2D = Points3DTo2DWithoutDuplicates(points3D);
+
+            DrawPoints(graphics, points2D, color);
         }
 
         public void Draw(Graphics graphics)
@@ -139,28 +162,10 @@ namespace Hyperboloid
             graphics.Clear(BackgroundColor);
 
             foreach (var figure in figures3D)
-            {
-                var points3D    = GetPoints(figure.Item1, Figures3DStep);
-                points3D        = RotationTransform(points3D, Rotation);
-                points3D        = ScaleTranform(points3D, ScaleFactor);
-                points3D        = PositionTransform(points3D, ZeroPositionOffset);
-                
-                var points2D = Points3DTo2DWithoutDuplicates(points3D);
-
-                Draw(graphics, points2D, figure.Item2);
-            }
+                DrawFigure3D(graphics, figure.Item1, figure.Item2);
 
             foreach (var figure in figures2D)
-            {
-                var points3D    = GetPoints(figure.Item1, Figures2DStep).Select(point2d => new Point3D(point2d, figure.Item2)).ToArray();
-                points3D        = RotationTransform(points3D, Rotation);
-                points3D        = ScaleTranform(points3D, ScaleFactor);
-                points3D        = PositionTransform(points3D, ZeroPositionOffset);
-
-                var points2D = Points3DTo2DWithoutDuplicates(points3D);
-
-                Draw(graphics, points2D, figure.Item3);
-            }
+                DrawFigure2D(graphics, figure.Item1, figure.Item2, figure.Item3);
         }
     }
 }
